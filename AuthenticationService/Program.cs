@@ -1,8 +1,5 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Definir as portas manualmente
-builder.WebHost.UseUrls("http://localhost:3001", "https://localhost:7001");
-
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

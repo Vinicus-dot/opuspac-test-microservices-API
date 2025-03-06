@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\git\\node\\opuspac-test-microservices-API\\Opuspac.Test.MicroServices.API\\AuthenticationService\\AuthenticationService.csproj": {}
+    "D:\\Cods\\opuspac-test-microservices-API\\AuthenticationService\\AuthenticationService.csproj": {}
   },
   "projects": {
-    "C:\\git\\node\\opuspac-test-microservices-API\\Opuspac.Test.MicroServices.API\\AuthenticationService\\AuthenticationService.csproj": {
+    "D:\\Cods\\opuspac-test-microservices-API\\AuthenticationService\\AuthenticationService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\git\\node\\opuspac-test-microservices-API\\Opuspac.Test.MicroServices.API\\AuthenticationService\\AuthenticationService.csproj",
+        "projectUniqueName": "D:\\Cods\\opuspac-test-microservices-API\\AuthenticationService\\AuthenticationService.csproj",
         "projectName": "AuthenticationService",
-        "projectPath": "C:\\git\\node\\opuspac-test-microservices-API\\Opuspac.Test.MicroServices.API\\AuthenticationService\\AuthenticationService.csproj",
-        "packagesPath": "C:\\Users\\Openk\\.nuget\\packages\\",
-        "outputPath": "C:\\git\\node\\opuspac-test-microservices-API\\Opuspac.Test.MicroServices.API\\AuthenticationService\\obj\\",
+        "projectPath": "D:\\Cods\\opuspac-test-microservices-API\\AuthenticationService\\AuthenticationService.csproj",
+        "packagesPath": "C:\\Users\\Administrador\\.nuget\\packages\\",
+        "outputPath": "D:\\Cods\\opuspac-test-microservices-API\\AuthenticationService\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Openk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Administrador\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -37,6 +34,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -71,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
