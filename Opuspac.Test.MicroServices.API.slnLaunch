@@ -1,0 +1,22 @@
+[
+  {
+    "Name": "All Start",
+    "Projects": [
+      {
+        "Name": "AuthenticationService\\AuthenticationService.csproj",
+        "Action": "StartWithoutDebugging",
+        "DebugTarget": "http"
+      },
+      {
+        "Name": "ProductService\\ProductService.csproj",
+        "Action": "StartWithoutDebugging",
+        "DebugTarget": "http"
+      },
+      {
+        "Name": "WorkOrderService\\WorkOrderService.csproj",
+        "Action": "StartWithoutDebugging",
+        "DebugTarget": "http"
+      }
+    ]
+  }
+]
