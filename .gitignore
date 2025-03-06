@@ -483,3 +483,9 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+/AuthenticationService/obj/Debug/net8.0/AuthenticationService.AssemblyInfo.cs
+/AuthenticationService/obj/Debug/net8.0/AuthenticationService.AssemblyInfoInputs.cache
+/ProductService/obj/Debug/net8.0/ProductService.AssemblyInfo.cs
+/ProductService/obj/Debug/net8.0/ProductService.AssemblyInfoInputs.cache
+/WorkOrderService/obj/Debug/net8.0/WorkOrderService.AssemblyInfo.cs
+/WorkOrderService/obj/Debug/net8.0/WorkOrderService.AssemblyInfoInputs.cache
