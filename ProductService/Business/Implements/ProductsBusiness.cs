@@ -3,11 +3,16 @@ using ProductService.Model;
 using ProductService.Model.Request;
 using ProductService.Repository.Interfaces;
 using ServiceStack.Host;
+using ProductService.Helper;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace ProductService.Business.Implements
 {
     public class ProductsBusiness : IProductsBusiness
     {
+        private readonly string Queue = Util.GetEnvironmentVariable("PRODUCT_QUEUE");
+        private readonly string RabbitConnection = Util.GetEnvironmentVariable("RABBIT_CONNECTION");
         private readonly IProductsRepository _productsRepository;
         public ProductsBusiness(IProductsRepository productsRepository)
         {
@@ -30,6 +35,12 @@ namespace ProductService.Business.Implements
                 Name = createProductRequest.Name,
                 Description = createProductRequest.Description,
             });
+
+            RabbitMQFactory _rabbitMQ = new (RabbitConnection,Queue);
+
+            product = await _productsRepository.GetProduct(createProductRequest.Name);
+
+            await _rabbitMQ.PublishMessageAsync(JsonSerializer.Serialize(product));
 
             throw new HttpException(StatusCodes.Status201Created, "Sucesso");
         }

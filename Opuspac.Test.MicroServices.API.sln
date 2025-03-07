@@ -7,13 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationService", "Au
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductService", "ProductService\ProductService.csproj", "{4B7A9D00-0942-4B5A-AA26-F5257783FDDF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkOrderService", "WorkOrderService\WorkOrderService.csproj", "{FABC6C78-EC24-4896-AC52-7918F67BCB09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService", "WorkOrderService\OrderService.csproj", "{FABC6C78-EC24-4896-AC52-7918F67BCB09}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication", "Authentication", "{F385D5D6-4C78-4535-9CE0-33382E3DBEF8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Product", "Product", "{397190A9-EB2A-4730-A544-1FFB7AE92B1D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WorkOrder", "WorkOrder", "{356A80CC-8530-43D2-AA40-7F383B52D919}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Order", "Order", "{356A80CC-8530-43D2-AA40-7F383B52D919}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Business", "Authentication.Data\Authentication.Business.csproj", "{79D34ACF-66BA-4049-A9D2-06F51E16BBEF}"
 EndProject
