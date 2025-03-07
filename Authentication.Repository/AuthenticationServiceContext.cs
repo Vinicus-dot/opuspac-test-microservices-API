@@ -1,7 +1,7 @@
 ﻿using Authentication.Model.Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace Authentication.Data
+namespace Authentication.Business
 {
     public class AuthenticationServiceContext : DbContext
     {

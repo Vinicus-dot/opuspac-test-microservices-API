@@ -1,8 +1,10 @@
-using Authentication.Data;
-using Authentication.Data.Implements;
-using Authentication.Data.Interfaces;
+using Authentication.Business;
+using Authentication.Business.Implements;
+using Authentication.Business.Interfaces;
 using Authentication.Helper;
 using Authentication.Helper.Middleware;
+using Authentication.Repository.Implements;
+using Authentication.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 
@@ -12,7 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IAuthService,AuthService>();
+builder.Services.AddScoped<IAuthRepository,AuthRepository>();
+builder.Services.AddScoped<IAuthBusiness,AuthBusiness>();
 builder.Services.AddDbContext<AuthenticationServiceContext>(options =>
     options.UseNpgsql(Util.GetEnvironmentVariable("DEFAULT_CONNECTION")));  
 

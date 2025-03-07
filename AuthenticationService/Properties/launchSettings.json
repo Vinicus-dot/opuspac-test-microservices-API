@@ -7,7 +7,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ENCRYPTION_CLAIMS_KEY": "RXhmzLBBgvTyb3mg",
-        "DEFAULT_CONNECTION": "ASDASD"
+        "DEFAULT_CONNECTION": "Host=localhost;Port=5433;Database=postgres;Username=postgres;Password=mysecretpassword;"
       },
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:3001"

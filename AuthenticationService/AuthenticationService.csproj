@@ -20,8 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Authentication.Data\Authentication.Data.csproj" />
+    <ProjectReference Include="..\Authentication.Data\Authentication.Business.csproj" />
     <ProjectReference Include="..\Authentication.Model\Authentication.Model.csproj" />
+    <ProjectReference Include="..\Authentication.Repository\Authentication.Repository.csproj" />
   </ItemGroup>
 
 </Project>

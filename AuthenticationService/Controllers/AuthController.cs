@@ -1,4 +1,4 @@
-﻿using Authentication.Data.Interfaces;
+﻿using Authentication.Business.Interfaces;
 using Authentication.Model.Request;
 using Authentication.Model.Response;
 using Microsoft.AspNetCore.Mvc;
@@ -8,10 +8,10 @@ namespace AuthenticationService.Controllers
 {
     public class AuthController : GenericController
     {
-        private readonly IAuthService _authService;
-        public AuthController(IAuthService authService)
+        private readonly IAuthBusiness _authBusiness;
+        public AuthController(IAuthBusiness authService)
         {
-            _authService = authService;
+            _authBusiness = authService;
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace AuthenticationService.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
-            return Ok(await _authService.RegisterUser(request));
+            return Ok(await _authBusiness.RegisterUser(request));
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace AuthenticationService.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            return Ok(await _authService.AuthenticateUser(request));
+            return Ok(await _authBusiness.AuthenticateUser(request));
         }
 
     }

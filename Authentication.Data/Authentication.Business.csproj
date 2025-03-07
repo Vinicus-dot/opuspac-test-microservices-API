@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Authentication.Helper\Authentication.Helper.csproj" />
+    <ProjectReference Include="..\Authentication.Model\Authentication.Model.csproj" />
+    <ProjectReference Include="..\Authentication.Repository\Authentication.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

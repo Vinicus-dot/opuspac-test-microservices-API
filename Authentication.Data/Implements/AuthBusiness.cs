@@ -1,31 +1,24 @@
-﻿using Authentication.Data.Interfaces;
+﻿using Authentication.Business.Interfaces;
 using Authentication.Helper;
 using Authentication.Model.Request;
-using BCrypt.Net;
+using Authentication.Repository.Interfaces;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 using ServiceStack.Host;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Authentication.Data.Implements
+namespace Authentication.Business.Implements
 {
-    public class AuthService : IAuthService
+    public class AuthBusiness : IAuthBusiness
     {
-        private readonly AuthenticationServiceContext _context;
+        private readonly IAuthRepository _authRepository;
         private readonly JwtToken _jwtToken = new (Util.GetEnvironmentVariable("ENCRYPTION_CLAIMS_KEY"));
-        public AuthService(AuthenticationServiceContext context)
+        public AuthBusiness(IAuthRepository authRepository)
         {
-            _context = context;
+            _authRepository = authRepository;
         }
 
         public async Task<object> AuthenticateUser(LoginRequest loginRequest)
         {
-            var user = await _context.Users
-                .FirstOrDefaultAsync(u => u.Email == loginRequest.Email) ??
+            var user = await _authRepository.GetUser(loginRequest.Email) ??
                 throw new HttpException(StatusCodes.Status400BadRequest, "Usuário não encontrado.");
 
             bool isPasswordValid = BCrypt.Net.BCrypt.Verify(loginRequest.Password, user.Password);
@@ -42,15 +35,12 @@ namespace Authentication.Data.Implements
 
         public async Task<object> RegisterUser(RegisterRequest registerRequest)
         {
-            var user = new Model.Entity.User
+            await _authRepository.InsertUser(new()
             {
                 Email = registerRequest.Email,
                 Name = registerRequest.Name,
                 Password = BCrypt.Net.BCrypt.HashPassword(registerRequest.Password)
-            };
-
-            await _context.Users.AddAsync(user);
-            await _context.SaveChangesAsync();
+            });
 
             throw new HttpException(StatusCodes.Status201Created, "Sucesso");
         }
