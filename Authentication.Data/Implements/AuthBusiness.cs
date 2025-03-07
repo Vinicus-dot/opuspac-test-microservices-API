@@ -35,6 +35,11 @@ namespace Authentication.Business.Implements
 
         public async Task<object> RegisterUser(RegisterRequest registerRequest)
         {
+            var user = await _authRepository.GetUser(registerRequest.Email);
+
+            if(user != null)
+                throw new HttpException(StatusCodes.Status400BadRequest, "Este email já esta cadastrado!");
+
             await _authRepository.InsertUser(new()
             {
                 Email = registerRequest.Email,
