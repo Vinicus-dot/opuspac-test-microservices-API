@@ -3,11 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationService", "AuthenticationService\AuthenticationService.csproj", "{510E6969-3C80-4751-AB1D-C7F9952F515F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationService", "AuthenticationService\AuthenticationService.csproj", "{510E6969-3C80-4751-AB1D-C7F9952F515F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductService", "ProductService\ProductService.csproj", "{4B7A9D00-0942-4B5A-AA26-F5257783FDDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductService", "ProductService\ProductService.csproj", "{4B7A9D00-0942-4B5A-AA26-F5257783FDDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WorkOrderService", "WorkOrderService\WorkOrderService.csproj", "{FABC6C78-EC24-4896-AC52-7918F67BCB09}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkOrderService", "WorkOrderService\WorkOrderService.csproj", "{FABC6C78-EC24-4896-AC52-7918F67BCB09}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Authentication", "Authentication", "{F385D5D6-4C78-4535-9CE0-33382E3DBEF8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Product", "Product", "{397190A9-EB2A-4730-A544-1FFB7AE92B1D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WorkOrder", "WorkOrder", "{356A80CC-8530-43D2-AA40-7F383B52D919}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.Data", "Authentication.Data\Authentication.Data.csproj", "{79D34ACF-66BA-4049-A9D2-06F51E16BBEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.Model", "Authentication.Model\Authentication.Model.csproj", "{C48EC672-C67E-4FEF-96FF-F5F3748087D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authentication.Helper", "Authentication.Helper\Authentication.Helper.csproj", "{931F98F6-CDCC-471F-87A0-B45C0EBA3093}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +39,29 @@ Global
 		{FABC6C78-EC24-4896-AC52-7918F67BCB09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FABC6C78-EC24-4896-AC52-7918F67BCB09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FABC6C78-EC24-4896-AC52-7918F67BCB09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79D34ACF-66BA-4049-A9D2-06F51E16BBEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79D34ACF-66BA-4049-A9D2-06F51E16BBEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79D34ACF-66BA-4049-A9D2-06F51E16BBEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79D34ACF-66BA-4049-A9D2-06F51E16BBEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C48EC672-C67E-4FEF-96FF-F5F3748087D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C48EC672-C67E-4FEF-96FF-F5F3748087D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C48EC672-C67E-4FEF-96FF-F5F3748087D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C48EC672-C67E-4FEF-96FF-F5F3748087D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{931F98F6-CDCC-471F-87A0-B45C0EBA3093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{931F98F6-CDCC-471F-87A0-B45C0EBA3093}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{931F98F6-CDCC-471F-87A0-B45C0EBA3093}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{931F98F6-CDCC-471F-87A0-B45C0EBA3093}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{510E6969-3C80-4751-AB1D-C7F9952F515F} = {F385D5D6-4C78-4535-9CE0-33382E3DBEF8}
+		{4B7A9D00-0942-4B5A-AA26-F5257783FDDF} = {397190A9-EB2A-4730-A544-1FFB7AE92B1D}
+		{FABC6C78-EC24-4896-AC52-7918F67BCB09} = {356A80CC-8530-43D2-AA40-7F383B52D919}
+		{79D34ACF-66BA-4049-A9D2-06F51E16BBEF} = {F385D5D6-4C78-4535-9CE0-33382E3DBEF8}
+		{C48EC672-C67E-4FEF-96FF-F5F3748087D0} = {F385D5D6-4C78-4535-9CE0-33382E3DBEF8}
+		{931F98F6-CDCC-471F-87A0-B45C0EBA3093} = {F385D5D6-4C78-4535-9CE0-33382E3DBEF8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {254D028D-7F1F-4D43-8D52-5B2FAF84487B}
