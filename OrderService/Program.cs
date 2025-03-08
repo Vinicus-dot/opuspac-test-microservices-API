@@ -1,26 +1,27 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using ProductService.Business.Implements;
-using ProductService.Business.Interfaces;
-using ProductService.Helper;
-using ProductService.Helper.Middleware;
-using ProductService.Repository;
-using ProductService.Repository.Implements;
-using ProductService.Repository.Interfaces;
 using System.Reflection;
 using System.Text;
+using OrderService.Business.Implements;
+using OrderService.Business.Interfaces;
+using OrderService.Helper;
+using OrderService.HostRabbitMQ;
+using OrderService.Repository;
+using OrderService.Repository.Implements;
+using OrderService.Repository.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
-builder.Services.AddScoped<IProductsBusiness, ProductsBusiness>();
-builder.Services.AddDbContext<ProductServiceContext>();
+builder.Services.AddHostedService<OrderConsumer>();
+builder.Services.AddScoped<IOrdersRepository, OrdersRepository>();
+builder.Services.AddScoped<IOrdersBusiness, OrdersBusiness>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddDbContext<OrdersServiceContext>();
+
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -71,9 +72,7 @@ builder.Services.AddSwaggerGen(g =>
 });
 
 var app = builder.Build();
-app.UseMiddleware<ExceptionMiddleware>();
 
-app.UseCors();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

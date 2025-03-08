@@ -1,10 +1,10 @@
-using Authentication.Business;
-using Authentication.Business.Implements;
-using Authentication.Business.Interfaces;
-using Authentication.Helper;
-using Authentication.Helper.Middleware;
-using Authentication.Repository.Implements;
-using Authentication.Repository.Interfaces;
+using AuthenticationService.Business;
+using AuthenticationService.Business.Implements;
+using AuthenticationService.Business.Interfaces;
+using AuthenticationService.Helper;
+using AuthenticationService.Helper.Middleware;
+using AuthenticationService.Repository.Implements;
+using AuthenticationService.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Reflection;
@@ -17,8 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(g => g.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml")));
 builder.Services.AddScoped<IAuthRepository,AuthRepository>();
 builder.Services.AddScoped<IAuthBusiness,AuthBusiness>();
-builder.Services.AddDbContext<AuthenticationServiceContext>(options =>
-    options.UseNpgsql(Util.GetEnvironmentVariable("DEFAULT_CONNECTION")));  
+builder.Services.AddDbContext<AuthenticationServiceContext>();
 
 var app = builder.Build();
 app.UseMiddleware<ExceptionMiddleware>();

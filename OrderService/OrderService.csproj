@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
-    <UserSecretsId>acd1f2a5-25e3-4857-9ebb-5bb26f31f9d7</UserSecretsId>
+    <UserSecretsId>030dee3b-cd23-4843-87fb-6596523c2615</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -13,18 +13,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-	<PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
-	<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.2">
-		<PrivateAssets>all</PrivateAssets>
-		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	</PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
 	<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
-    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.6.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.5" />
-    <PackageReference Include="ServiceStack" Version="8.6.0" />
+    <PackageReference Include="RabbitMQ.Client" Version="7.1.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="7.3.1" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.6.0" />
+	<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="7.3.1" />
+	<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.6.0" />
+	<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.16" />
   </ItemGroup>
 
 </Project>

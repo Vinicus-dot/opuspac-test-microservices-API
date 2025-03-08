@@ -1,4 +1,4 @@
-﻿using ProductService.Model;
+﻿using ProductService.Model.Entity;
 using ProductService.Model.Request;
 
 namespace ProductService.Business.Interfaces

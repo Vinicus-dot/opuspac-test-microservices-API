@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProductService.Business.Interfaces;
+using ProductService.Model.Entity;
 using ProductService.Model.Request;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -21,7 +22,7 @@ namespace ProductService.Controllers
         /// </remarks>
         /// <response code="200">Returns the list of products</response>
         /// <response code="500">Internal server error</response>
-        [SwaggerResponse(200, "Returns the list of products.")]
+        [SwaggerResponse(200, "Returns the list of products.", typeof(List<Product>))]
         [SwaggerResponse(500, "Internal server error.")]
         [HttpGet]
         [Authorize]

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProductService.Model;
+using ProductService.Model.Entity;
 using ProductService.Repository.Interfaces;
 
 namespace ProductService.Repository.Implements

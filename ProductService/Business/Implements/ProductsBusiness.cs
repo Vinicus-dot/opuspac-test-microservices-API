@@ -1,11 +1,11 @@
 ﻿using ProductService.Business.Interfaces;
-using ProductService.Model;
 using ProductService.Model.Request;
 using ProductService.Repository.Interfaces;
 using ServiceStack.Host;
 using ProductService.Helper;
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using ProductService.Model.Entity;
 
 namespace ProductService.Business.Implements
 {

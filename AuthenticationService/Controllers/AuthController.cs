@@ -1,6 +1,6 @@
-﻿using Authentication.Business.Interfaces;
-using Authentication.Model.Request;
-using Authentication.Model.Response;
+﻿using AuthenticationService.Business.Interfaces;
+using AuthenticationService.Model.Request;
+using AuthenticationService.Model.Response;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
