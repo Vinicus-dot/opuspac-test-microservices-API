@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using WorkOrderService.Business.Interfaces;
 
@@ -25,6 +26,7 @@ namespace WorkOrderService.Controllers
         [SwaggerResponse(400, "Bad request.")]
         [SwaggerResponse(500, "Internal server error.")]
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAllOrders()
         {
             return Ok(await _ordersBusiness.GetAllOrders());

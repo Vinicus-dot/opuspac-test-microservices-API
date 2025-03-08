@@ -1,4 +1,5 @@
 ﻿using OrderService.Model.Entity;
+using OrderService.Model.Request;
 using WorkOrderService.Business.Interfaces;
 using WorkOrderService.Repository.Interfaces;
 
@@ -12,9 +13,17 @@ namespace WorkOrderService.Business.Implements
             _ordersRepository = ordersRepository;
         }
 
-        public Task<List<Order>> GetAllOrders()
+        public async Task<List<Order>> GetAllOrders()
         {
-            return _ordersRepository.GetAllOrders();
+            return await _ordersRepository.GetAllOrders();
+        }
+
+        public async Task CreateOrder(CreateOrderRequest createOrderRequest)
+        {
+            await _ordersRepository.InsertOrder(new()
+            {
+                Message = createOrderRequest.Message
+            });
         }
     }
 }

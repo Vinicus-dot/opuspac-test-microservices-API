@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProductService.Business.Interfaces;
 using ProductService.Model.Request;
 using Swashbuckle.AspNetCore.Annotations;
@@ -23,6 +24,7 @@ namespace ProductService.Controllers
         [SwaggerResponse(200, "Returns the list of products.")]
         [SwaggerResponse(500, "Internal server error.")]
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetProducts()
         {
             return Ok(await _productsBusiness.GetAllProducts());
@@ -42,6 +44,7 @@ namespace ProductService.Controllers
         [SwaggerResponse(400, "Malformed request.")]
         [SwaggerResponse(500, "Internal server error.")]
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateProduct([FromBody] CreateProductRequest request)
         {
             return Ok(await _productsBusiness.CreateProduct(request));

@@ -1,6 +1,8 @@
 ﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
+using WorkOrderService.Business.Implements;
+using WorkOrderService.Business.Interfaces;
 using WorkOrderService.Helper;
 
 namespace WorkOrderService.HostRabbitMQ
@@ -9,10 +11,12 @@ namespace WorkOrderService.HostRabbitMQ
     {
         private readonly IConnection _connection;
         private readonly IChannel _channel;
+        private readonly IOrdersBusiness _ordersBusiness;
         private readonly string Queue = Util.GetEnvironmentVariable("PRODUCT_QUEUE");
         private readonly string RabbitConnection = Util.GetEnvironmentVariable("RABBIT_CONNECTION");
-        public OrdersConsumer()
+        public OrdersConsumer(IOrdersBusiness ordersBusiness)
         {
+            _ordersBusiness = ordersBusiness;
             var factory = new ConnectionFactory { Uri = new Uri(RabbitConnection) };
 
             _connection = factory.CreateConnectionAsync().Result;
@@ -36,7 +40,7 @@ namespace WorkOrderService.HostRabbitMQ
                 var message = Encoding.UTF8.GetString(body);
                 Console.WriteLine($"[x] Mensagem recebida: {message}");
 
-                await ProcessMessageAsync(message); // chamar service para salvar a order 
+                await ProcessMessageAsync(message);
 
                 await _channel.BasicAckAsync(ea.DeliveryTag, false);
             };
@@ -52,7 +56,7 @@ namespace WorkOrderService.HostRabbitMQ
 
         private async Task ProcessMessageAsync(string message)
         {
-            await Task.Delay(500);
+            await _ordersBusiness.CreateOrder(new () { Message = message });
             Console.WriteLine($"Processando: {message}");
         }
     }

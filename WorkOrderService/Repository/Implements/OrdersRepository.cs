@@ -16,5 +16,11 @@ namespace WorkOrderService.Repository.Implements
         {
             return await _context.Orders.ToListAsync();
         }
+
+        public async Task InsertOrder(Order order)
+        {
+            await _context.Orders.AddAsync(order);
+            await _context.SaveChangesAsync();
+        }
     }
 }

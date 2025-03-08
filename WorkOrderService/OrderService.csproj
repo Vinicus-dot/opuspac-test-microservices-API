@@ -7,6 +7,9 @@
     <InvariantGlobalization>true</InvariantGlobalization>
     <UserSecretsId>030dee3b-cd23-4843-87fb-6596523c2615</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +18,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
 	<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
 	<PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="7.3.1" />
+	<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.6.0" />
+	<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.16" />
   </ItemGroup>
 
 </Project>
