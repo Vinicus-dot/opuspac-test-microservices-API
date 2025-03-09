@@ -2,6 +2,8 @@
 using OrderService.Model.Request;
 using OrderService.Business.Interfaces;
 using OrderService.Repository.Interfaces;
+using OrderService.Model.DTO;
+using ServiceStack.Host;
 
 namespace OrderService.Business.Implements
 {
@@ -13,13 +15,17 @@ namespace OrderService.Business.Implements
             _ordersRepository = ordersRepository;
         }
 
-        public async Task<List<Order>> GetAllOrders()
+        public async Task<List<OrderDTO>> GetAllOrders()
         {
-            return await _ordersRepository.GetAllOrders();
+            var orders =  await _ordersRepository.GetAllOrders();
+            return new OrderDTO().ToListDto(orders);
         }
 
         public async Task CreateOrder(CreateOrderRequest createOrderRequest)
         {
+            if (string.IsNullOrEmpty(createOrderRequest.Message))
+                throw new HttpException(StatusCodes.Status400BadRequest, "Message deve ser preenchido!");
+
             await _ordersRepository.InsertOrder(new()
             {
                 Message = createOrderRequest.Message

@@ -12,47 +12,60 @@ namespace OrderService.HostRabbitMQ
         private readonly IConnection _connection;
         private readonly IChannel _channel;
         private readonly IServiceScopeFactory _serviceScopeFactory;
-        private readonly string Queue = Util.GetEnvironmentVariable("PRODUCT_QUEUE");
-        private readonly string RabbitConnection = Util.GetEnvironmentVariable("RABBIT_CONNECTION");
 
         public OrderConsumer(IServiceScopeFactory serviceScopeFactory)
         {
-            _serviceScopeFactory = serviceScopeFactory;
-            var factory = new ConnectionFactory { Uri = new Uri(RabbitConnection) };
+            try
+            {
+                _serviceScopeFactory = serviceScopeFactory;
+                var factory = new ConnectionFactory { Uri = new Uri(Util.RabbitConnection) };
 
-            _connection = factory.CreateConnectionAsync().Result;
-            _channel = _connection.CreateChannelAsync().Result;
 
-            _channel.QueueDeclareAsync(queue: Queue,
-                                 durable: true,
-                                 exclusive: false,
-                                 autoDelete: false,
-                                 arguments: null);
+                _connection = factory.CreateConnectionAsync().Result;
+                _channel = _connection.CreateChannelAsync().Result;
+
+                _channel.QueueDeclareAsync(queue: Util.QueueProduct,
+                                     durable: true,
+                                     exclusive: false,
+                                     autoDelete: false,
+                                     arguments: null);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Erro OrderConsumer Contrutor {e.Message}");
+            }
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
-            var consumer = new AsyncEventingBasicConsumer(_channel);
-
-            Console.WriteLine($"Escutando na fila {Queue}");
-            consumer.ReceivedAsync += async (model, ea) =>
+            try
             {
-                var body = ea.Body.ToArray();
-                var message = Encoding.UTF8.GetString(body);
-                Console.WriteLine($"[x] Mensagem recebida: {message}");
+                var consumer = new AsyncEventingBasicConsumer(_channel);
 
-                await ProcessMessageAsync(message);
+                Console.WriteLine($"Escutando na fila {Util.QueueProduct}");
+                consumer.ReceivedAsync += async (model, ea) =>
+                {
+                    var body = ea.Body.ToArray();
+                    var message = Encoding.UTF8.GetString(body);
+                    Console.WriteLine($"[x] Mensagem recebida: {message}");
 
-                await _channel.BasicAckAsync(ea.DeliveryTag, false);
-            };
+                    await ProcessMessageAsync(message);
 
-            await _channel.BasicConsumeAsync(queue: Queue,
-                                 autoAck: false,
-                                 consumer: consumer);
+                    await _channel.BasicAckAsync(ea.DeliveryTag, false);
+                };
 
-            Console.WriteLine($"Aguardando Mensagem... ");
+                await _channel.BasicConsumeAsync(queue: Util.QueueProduct,
+                                        autoAck: false,
+                                        consumer: consumer);
 
-            await Task.CompletedTask;
+                Console.WriteLine($"Aguardando Mensagem... ");
+
+                await Task.CompletedTask;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Erro ExecuteAsync OrderConsumer {e.Message}");
+            }
         }
 
         private async Task ProcessMessageAsync(string message)
