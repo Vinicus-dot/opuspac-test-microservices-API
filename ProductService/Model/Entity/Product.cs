@@ -11,6 +11,7 @@ namespace ProductService.Model.Entity
         [Column("description")]
         public string Description { get; set; }
         [Column("price")]
-        public decimal Price { get; set; }
+        public decimal Price { get; set; } 
     }
 }
+

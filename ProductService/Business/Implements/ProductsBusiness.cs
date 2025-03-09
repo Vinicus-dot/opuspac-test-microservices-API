@@ -3,26 +3,26 @@ using ProductService.Model.Request;
 using ProductService.Repository.Interfaces;
 using ServiceStack.Host;
 using ProductService.Helper;
-using System.Text.Json.Serialization;
 using System.Text.Json;
-using ProductService.Model.Entity;
+using ProductService.Model.DTO;
 
 namespace ProductService.Business.Implements
 {
     public class ProductsBusiness : IProductsBusiness
     {
-        private readonly string Queue = Util.GetEnvironmentVariable("PRODUCT_QUEUE");
-        private readonly string RabbitConnection = Util.GetEnvironmentVariable("RABBIT_CONNECTION");
         private readonly IProductsRepository _productsRepository;
         public ProductsBusiness(IProductsRepository productsRepository)
         {
             _productsRepository = productsRepository;
         }
 
-        public async Task<object> CreateProduct(CreateProductRequest createProductRequest)
+        public async Task<object?> CreateProduct(CreateProductRequest createProductRequest)
         {
-            if(createProductRequest.Price < 0)
+            if(createProductRequest.Price <= 0)
                 throw new HttpException(StatusCodes.Status400BadRequest, "O preço tem que ser maior que zero!");
+
+            if (string.IsNullOrEmpty(createProductRequest.Name))
+                throw new HttpException(StatusCodes.Status400BadRequest, "Name deve ser preenchido!");
 
             var product = await _productsRepository.GetProduct(createProductRequest.Name);
 
@@ -36,18 +36,19 @@ namespace ProductService.Business.Implements
                 Description = createProductRequest.Description,
             });
 
-            RabbitMQFactory _rabbitMQ = new (RabbitConnection,Queue);
+            RabbitMQFactory _rabbitMQ = new (Util.RabbitConnection, Util.QueueProduct);
 
             product = await _productsRepository.GetProduct(createProductRequest.Name);
 
             await _rabbitMQ.PublishMessageAsync(JsonSerializer.Serialize(product));
 
-            throw new HttpException(StatusCodes.Status201Created, "Sucesso");
+            return default;
         }
 
-        public async Task<List<Product>> GetAllProducts()
+        public async Task<List<ProductDTO>> GetAllProducts()
         {
-            return await _productsRepository.GetAllProducts();
+            var products = await _productsRepository.GetAllProducts(); 
+            return new ProductDTO().ToListDto(products);
         }
     }
 }

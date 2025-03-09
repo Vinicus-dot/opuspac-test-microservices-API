@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProductService.Business.Interfaces;
+using ProductService.Model.DTO;
 using ProductService.Model.Entity;
 using ProductService.Model.Request;
 using Swashbuckle.AspNetCore.Annotations;
@@ -22,7 +23,7 @@ namespace ProductService.Controllers
         /// </remarks>
         /// <response code="200">Returns the list of products</response>
         /// <response code="500">Internal server error</response>
-        [SwaggerResponse(200, "Returns the list of products.", typeof(List<Product>))]
+        [SwaggerResponse(200, "Returns the list of products.", typeof(List<ProductDTO>))]
         [SwaggerResponse(500, "Internal server error.")]
         [HttpGet]
         [Authorize]
@@ -48,7 +49,7 @@ namespace ProductService.Controllers
         [Authorize]
         public async Task<IActionResult> CreateProduct([FromBody] CreateProductRequest request)
         {
-            return Ok(await _productsBusiness.CreateProduct(request));
+            return Created("",await _productsBusiness.CreateProduct(request));
         }
 
     }
