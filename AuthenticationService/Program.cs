@@ -18,7 +18,15 @@ builder.Services.AddSwaggerGen(g => g.IncludeXmlComments(Path.Combine(AppContext
 builder.Services.AddScoped<IAuthRepository,AuthRepository>();
 builder.Services.AddScoped<IAuthBusiness,AuthBusiness>();
 builder.Services.AddDbContext<AuthenticationServiceContext>();
-
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader();
+    });
+});
 var app = builder.Build();
 app.UseMiddleware<ExceptionMiddleware>();
 

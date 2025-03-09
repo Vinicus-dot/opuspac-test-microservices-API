@@ -32,7 +32,7 @@ namespace AuthenticationService.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
-            return Ok(await _authBusiness.RegisterUser(request));
+            return Created("",await _authBusiness.RegisterUser(request));
         }
 
         /// <summary>

@@ -10,7 +10,6 @@ namespace AuthenticationService.Business.Implements
     public class AuthBusiness : IAuthBusiness
     {
         private readonly IAuthRepository _authRepository;
-        private readonly JwtToken _jwtToken = new (Util.GetEnvironmentVariable("ENCRYPTION_CLAIMS_KEY"));
         public AuthBusiness(IAuthRepository authRepository)
         {
             _authRepository = authRepository;
@@ -18,6 +17,12 @@ namespace AuthenticationService.Business.Implements
 
         public async Task<object> AuthenticateUser(LoginRequest loginRequest)
         {
+            if (string.IsNullOrEmpty(loginRequest.Email))
+                throw new HttpException(StatusCodes.Status400BadRequest, "Email deve ser preenchido!");
+
+            if (string.IsNullOrEmpty(loginRequest.Password))
+                throw new HttpException(StatusCodes.Status400BadRequest, "Senha deve ser preenchida!");
+
             var user = await _authRepository.GetUser(loginRequest.Email) ??
                 throw new HttpException(StatusCodes.Status400BadRequest, "Usuário não encontrado.");
 
@@ -29,12 +34,24 @@ namespace AuthenticationService.Business.Implements
             return new
             {
                 success = true,
-                token = _jwtToken.CreateToken(user.Email)
+                token = Util._jwtToken.CreateToken(user.Email)
             };
         }
 
-        public async Task<object> RegisterUser(RegisterRequest registerRequest)
+        public async Task<object?> RegisterUser(RegisterRequest registerRequest)
         {
+            if(string.IsNullOrEmpty(registerRequest.Name))
+                throw new HttpException(StatusCodes.Status400BadRequest, "Nome deve ser preenchido!");
+
+            if (string.IsNullOrEmpty(registerRequest.Email))
+                throw new HttpException(StatusCodes.Status400BadRequest, "Nome deve ser preenchido!");
+
+            if (string.IsNullOrEmpty(registerRequest.Password))
+                throw new HttpException(StatusCodes.Status400BadRequest, "Nome deve ser preenchido!");
+
+            if (!Util.IsValidEmail(registerRequest.Email))
+                throw new HttpException(StatusCodes.Status400BadRequest, "Email inválido!");
+            
             var user = await _authRepository.GetUser(registerRequest.Email);
 
             if(user != null)
@@ -47,7 +64,7 @@ namespace AuthenticationService.Business.Implements
                 Password = BCrypt.Net.BCrypt.HashPassword(registerRequest.Password)
             });
 
-            throw new HttpException(StatusCodes.Status201Created, "Sucesso");
+            return default;
         }
     }
 }
