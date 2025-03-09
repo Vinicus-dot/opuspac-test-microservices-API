@@ -7,7 +7,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "PRODUCT_QUEUE": "product_queue",
-        "RABBIT_CONNECTION": "xxx",
+        "RABBIT_CONNECTION": "",
         "DEFAULT_CONNECTION": "Host=localhost;Port=5433;Database=postgres;Username=postgres;Password=mysecretpassword;",
         "ENCRYPTION_CLAIMS_KEY": "Z2VtZXJhdGVzdGFsbHkgY29tcGxleCBrZXkgb3ZlciB0aGUgY2hhbGxlbmdlIG9mIGNvZGUgYnkgaW4gdGhpcyBmb3Jt"
       },

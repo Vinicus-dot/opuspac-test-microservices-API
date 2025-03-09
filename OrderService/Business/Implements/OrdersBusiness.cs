@@ -4,6 +4,7 @@ using OrderService.Business.Interfaces;
 using OrderService.Repository.Interfaces;
 using OrderService.Model.DTO;
 using ServiceStack.Host;
+using OrderService.Model.Response;
 
 namespace OrderService.Business.Implements
 {
@@ -15,10 +16,16 @@ namespace OrderService.Business.Implements
             _ordersRepository = ordersRepository;
         }
 
-        public async Task<List<OrderDTO>> GetAllOrders()
+        public async Task<ListResponse<OrderDTO>> GetAllOrders(int pageNumber, int pageSize)
         {
-            var orders =  await _ordersRepository.GetAllOrders();
-            return new OrderDTO().ToListDto(orders);
+            var orders =  await _ordersRepository.GetAllOrders(pageNumber, pageSize);
+            return new ListResponse<OrderDTO>
+            {
+                Data = new OrderDTO().ToListDto(orders.Data),
+                Total = orders.Total,
+                PageNumber = orders.PageNumber,
+                PageSize = orders.PageSize
+            };
         }
 
         public async Task CreateOrder(CreateOrderRequest createOrderRequest)

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using OrderService.Business.Interfaces;
 using OrderService.Model.DTO;
+using OrderService.Model.Response;
 
 namespace OrderService.Controllers
 {
@@ -23,14 +24,14 @@ namespace OrderService.Controllers
         /// <response code="200">Orders successfully retrieved</response>
         /// <response code="400">Bad request</response>
         /// <response code="500">Internal server error</response>
-        [SwaggerResponse(200, "Orders successfully retrieved.", typeof(List<OrderDTO>))]
+        [SwaggerResponse(200, "Orders successfully retrieved.", typeof(ListResponse<OrderDTO>))]
         [SwaggerResponse(400, "Bad request.")]
         [SwaggerResponse(500, "Internal server error.")]
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> GetAllOrders()
+        public async Task<IActionResult> GetAllOrders(int pageNumber = 1, int pageSize = 10)
         {
-            return Ok(await _ordersBusiness.GetAllOrders());
+            return Ok(await _ordersBusiness.GetAllOrders(pageNumber, pageSize));
         }
     }
 }

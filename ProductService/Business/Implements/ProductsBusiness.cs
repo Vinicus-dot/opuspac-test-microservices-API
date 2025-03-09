@@ -5,6 +5,7 @@ using ServiceStack.Host;
 using ProductService.Helper;
 using System.Text.Json;
 using ProductService.Model.DTO;
+using ProductService.Model.Response;
 
 namespace ProductService.Business.Implements
 {
@@ -45,10 +46,16 @@ namespace ProductService.Business.Implements
             return default;
         }
 
-        public async Task<List<ProductDTO>> GetAllProducts()
+        public async Task<ListResponse<ProductDTO>> GetAllProducts(int pageNumber, int pageSize)
         {
-            var products = await _productsRepository.GetAllProducts(); 
-            return new ProductDTO().ToListDto(products);
+            var products = await _productsRepository.GetAllProducts(pageNumber, pageSize); 
+            return new ListResponse<ProductDTO>
+            {
+                Data = new ProductDTO().ToListDto(products.Data),
+                Total = products.Total,
+                PageNumber = products.PageNumber,
+                PageSize = products.PageSize
+            };
         }
     }
 }

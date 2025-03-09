@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProductService.Model.Entity;
+using ProductService.Model.Response;
 using ProductService.Repository.Interfaces;
 
 namespace ProductService.Repository.Implements
@@ -12,9 +13,16 @@ namespace ProductService.Repository.Implements
             _context = context;
         }
 
-        public async Task<List<Product>> GetAllProducts()
+        public async Task<ListResponse<Product>> GetAllProducts(int pageNumber, int pageSize)
         {
-            return await _context.Products.ToListAsync();
+            var products = await _context.Products.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+            return new ListResponse<Product>
+            {
+                Data = products,
+                Total = await _context.Products.CountAsync(),
+                PageNumber = pageNumber,
+                PageSize = pageSize
+            };
         }
 
         public async Task<Product?> GetProduct(string name)

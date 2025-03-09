@@ -30,13 +30,18 @@ RABBIT_CONNECTION=amqp://guest:guest@localhost:5672/
 ENCRYPTION_CLAIMS_KEY=INSIRA_SUA_CHAVE_AQUI
 ```
 
+Caso queria rodar o banco no docker aqui esta o comando
+```
+download docker https://www.docker.com/
+docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5433:5432 -d --rm postgres:latest
+```
+
 Caso precise criar uma nova migração:
 
 ```sh
-dotnet ef migrations add NomeDaMigracao --project ./Caminho/Para/SeuProjeto.Repository
-dotnet ef migrations add  ProductService
-dotnet ef migrations add  OrderService
-dotnet ef migrations add  AuthenticationService
+dotnet ef migrations add  ProductService --project ProductService 
+dotnet ef migrations add  OrderService --project OrderService 
+dotnet ef migrations add  AuthenticationService --project AuthenticationService 
 ```
 
 ### Configurar o banco de dados
@@ -44,15 +49,15 @@ dotnet ef migrations add  AuthenticationService
 Se o projeto utilizar Entity Framework Core, aplique as migrações:
 
 ```sh
-dotnet ef database update  ProductService
-dotnet ef database update  OrderService
-dotnet ef database update  AuthenticationService
+dotnet ef database update  --project ProductService
+dotnet ef database update  --project OrderService
+dotnet ef database update  --project AuthenticationService
 ```
 
 ### Executar a aplicação
 
 ```sh
-dotnet run ProductService
+dotnet run ProductService 
 dotnet run OrderService
 dotnet run AuthenticationService
 ```

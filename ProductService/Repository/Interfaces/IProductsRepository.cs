@@ -1,5 +1,6 @@
 ﻿using ProductService.Model.Entity;
 using ProductService.Model.Request;
+using ProductService.Model.Response;
 
 namespace ProductService.Repository.Interfaces
 {
@@ -7,6 +8,6 @@ namespace ProductService.Repository.Interfaces
     {
         Task InsertProduct(Product product);
         Task<Product?> GetProduct(string name);
-        Task<List<Product>> GetAllProducts();
+        Task<ListResponse<Product>> GetAllProducts(int pageNumber, int pageSize);
     }
 }

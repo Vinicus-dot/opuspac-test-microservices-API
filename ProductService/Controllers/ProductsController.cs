@@ -27,9 +27,9 @@ namespace ProductService.Controllers
         [SwaggerResponse(500, "Internal server error.")]
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> GetProducts()
+        public async Task<IActionResult> GetProducts(int pageNumber = 1, int pageSize = 10)
         {
-            return Ok(await _productsBusiness.GetAllProducts());
+            return Ok(await _productsBusiness.GetAllProducts(pageNumber, pageSize));
         }
 
         /// <summary>
