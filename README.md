@@ -31,9 +31,29 @@ ENCRYPTION_CLAIMS_KEY=INSIRA_SUA_CHAVE_AQUI
 ```
 
 Caso queria rodar o banco no docker aqui esta o comando
+
+
+download docker 
 ```
-download docker https://www.docker.com/
+https://www.docker.com/
+```
+depois de instalar e abrir o docker vm rodar o comando
+```
+docker-compose up
+```
+para parar 
+
+```
+docker-compose down
+```
+
+
+Imagens usada no docker
+```
 docker run --name my-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5433:5432 -d --rm postgres:latest
+```
+```
+docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 ```
 
 Caso precise criar uma nova migração:
