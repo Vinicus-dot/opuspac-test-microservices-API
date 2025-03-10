@@ -1,8 +1,10 @@
-﻿using ServiceStack.Host;
+﻿using Microsoft.Extensions.Logging;
 using System.Net;
+using ServiceStack.Host;
+using Microsoft.AspNetCore.Http;
 using System.Text.Json;
 
-namespace ProductService.Helper.Middleware
+namespace Helper.Middleware
 {
     public class ExceptionMiddleware
     {

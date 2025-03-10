@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AuthenticationService.Helper
+namespace Helper
 {
     public class Util
     {
+        public static readonly string QueueProduct = GetEnvironmentVariable("PRODUCT_QUEUE");
+        public static readonly string RabbitConnection = GetEnvironmentVariable("RABBIT_CONNECTION");
         public static readonly JwtToken _jwtToken = new(GetEnvironmentVariable("ENCRYPTION_CLAIMS_KEY"));
         public static string GetEnvironmentVariable(string variable)
         {

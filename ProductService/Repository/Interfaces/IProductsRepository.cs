@@ -1,6 +1,5 @@
-﻿using ProductService.Model.Entity;
-using ProductService.Model.Request;
-using ProductService.Model.Response;
+﻿using Model;
+using ProductService.Model.Entity;
 
 namespace ProductService.Repository.Interfaces
 {

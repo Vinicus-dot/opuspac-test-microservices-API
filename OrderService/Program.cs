@@ -6,11 +6,11 @@ using System.Reflection;
 using System.Text;
 using OrderService.Business.Implements;
 using OrderService.Business.Interfaces;
-using OrderService.Helper;
 using OrderService.HostRabbitMQ;
 using OrderService.Repository;
 using OrderService.Repository.Implements;
 using OrderService.Repository.Interfaces;
+using Helper;
 
 var builder = WebApplication.CreateBuilder(args);
 

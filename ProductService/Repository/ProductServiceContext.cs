@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProductService.Helper;
 using ProductService.Model.Entity;
 
 namespace ProductService.Repository

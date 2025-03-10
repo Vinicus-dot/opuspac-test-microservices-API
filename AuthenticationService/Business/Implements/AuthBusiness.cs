@@ -1,8 +1,7 @@
 ﻿using AuthenticationService.Business.Interfaces;
-using AuthenticationService.Helper;
 using AuthenticationService.Model.Request;
 using AuthenticationService.Repository.Interfaces;
-using Microsoft.AspNetCore.Http;
+using Helper;
 using ServiceStack.Host;
 
 namespace AuthenticationService.Business.Implements

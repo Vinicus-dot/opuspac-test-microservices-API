@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Model;
 using ProductService.Model.Entity;
-using ProductService.Model.Response;
 using ProductService.Repository.Interfaces;
 
 namespace ProductService.Repository.Implements

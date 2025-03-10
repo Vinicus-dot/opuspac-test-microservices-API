@@ -1,7 +1,5 @@
-﻿using AuthenticationService.Helper;
-using AuthenticationService.Model.Entity;
+﻿using AuthenticationService.Model.Entity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace AuthenticationService.Business
 {

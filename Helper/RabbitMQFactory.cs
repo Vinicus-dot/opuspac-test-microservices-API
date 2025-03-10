@@ -1,7 +1,7 @@
 ﻿using RabbitMQ.Client;
 using System.Text;
 
-namespace ProductService.Helper
+namespace Helper
 {
     public class RabbitMQFactory
     {

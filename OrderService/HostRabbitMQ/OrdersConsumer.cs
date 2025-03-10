@@ -1,9 +1,8 @@
 ﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System.Text;
-using OrderService.Business.Implements;
 using OrderService.Business.Interfaces;
-using OrderService.Helper;
+using Helper;
 
 namespace OrderService.HostRabbitMQ
 {

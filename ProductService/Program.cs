@@ -1,12 +1,10 @@
+using Helper;
+using Helper.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ProductService.Business.Implements;
 using ProductService.Business.Interfaces;
-using ProductService.Helper;
-using ProductService.Helper.Middleware;
 using ProductService.Repository;
 using ProductService.Repository.Implements;
 using ProductService.Repository.Interfaces;

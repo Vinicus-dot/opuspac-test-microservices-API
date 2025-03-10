@@ -1,4 +1,4 @@
-namespace ProductService.Model.Response
+namespace Model
 {
     public class ListResponse<T>
     {

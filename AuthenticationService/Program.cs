@@ -1,12 +1,9 @@
 using AuthenticationService.Business;
 using AuthenticationService.Business.Implements;
 using AuthenticationService.Business.Interfaces;
-using AuthenticationService.Helper;
-using AuthenticationService.Helper.Middleware;
 using AuthenticationService.Repository.Implements;
 using AuthenticationService.Repository.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using System;
+using Helper.Middleware;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);

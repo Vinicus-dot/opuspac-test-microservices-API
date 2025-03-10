@@ -1,7 +1,7 @@
-﻿using OrderService.Model.DTO;
-using OrderService.Model.Entity;
+﻿using Model;
+using OrderService.Model.DTO;
 using OrderService.Model.Request;
-using OrderService.Model.Response;
+
 
 namespace OrderService.Business.Interfaces
 {

@@ -2,10 +2,10 @@
 using ProductService.Model.Request;
 using ProductService.Repository.Interfaces;
 using ServiceStack.Host;
-using ProductService.Helper;
 using System.Text.Json;
 using ProductService.Model.DTO;
-using ProductService.Model.Response;
+using Helper;
+using Model;
 
 namespace ProductService.Business.Implements
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Model;
 using OrderService.Model.Entity;
-using OrderService.Model.Response;
 using OrderService.Repository.Interfaces;
 
 namespace OrderService.Repository.Implements

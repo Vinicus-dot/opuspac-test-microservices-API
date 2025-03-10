@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using OrderService.Business.Interfaces;
 using OrderService.Model.DTO;
-using OrderService.Model.Response;
+using Model;
 
 namespace OrderService.Controllers
 {

@@ -48,6 +48,11 @@ Se você optar por executar o banco de dados e o RabbitMQ usando Docker, siga os
 
 ### Criando e Aplicando Migrações
 
+Rodar o comando para instalar a ferramenta Entity Framework.
+```
+dotnet tool install --global dotnet-ef
+```
+
 Caso precise criar uma nova migração para o Entity Framework Core, você pode usar os seguintes comandos:
 
 - Para adicionar uma migração para o `ProductService`, execute `dotnet ef migrations add ProductService --project ProductService`.

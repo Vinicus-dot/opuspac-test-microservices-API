@@ -4,7 +4,7 @@ using OrderService.Business.Interfaces;
 using OrderService.Repository.Interfaces;
 using OrderService.Model.DTO;
 using ServiceStack.Host;
-using OrderService.Model.Response;
+using Model;
 
 namespace OrderService.Business.Implements
 {

@@ -1,5 +1,5 @@
-﻿using OrderService.Model.Entity;
-using OrderService.Model.Response;
+﻿using Model;
+using OrderService.Model.Entity;
 
 namespace OrderService.Repository.Interfaces
 {
