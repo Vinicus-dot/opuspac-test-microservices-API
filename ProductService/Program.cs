@@ -5,9 +5,9 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ProductService.Business.Implements;
 using ProductService.Business.Interfaces;
-using ProductService.Repository;
-using ProductService.Repository.Implements;
-using ProductService.Repository.Interfaces;
+using Repository;
+using Repository.Implements;
+using Repository.Interfaces;
 using System.Reflection;
 using System.Text;
 
@@ -15,7 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
 builder.Services.AddScoped<IProductsBusiness, ProductsBusiness>();
-builder.Services.AddDbContext<ProductServiceContext>();
+builder.Services.AddDbContext<MicroServiceContext>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

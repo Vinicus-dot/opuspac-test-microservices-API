@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -7,10 +6,10 @@ using System.Text;
 using OrderService.Business.Implements;
 using OrderService.Business.Interfaces;
 using OrderService.HostRabbitMQ;
-using OrderService.Repository;
-using OrderService.Repository.Implements;
-using OrderService.Repository.Interfaces;
 using Helper;
+using Repository.Interfaces;
+using Repository.Implements;
+using Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +19,7 @@ builder.Services.AddScoped<IOrdersBusiness, OrdersBusiness>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddDbContext<OrdersServiceContext>();
+builder.Services.AddDbContext<MicroServiceContext>();
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>

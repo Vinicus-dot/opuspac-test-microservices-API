@@ -1,7 +1,7 @@
 ﻿using AuthenticationService.Business.Interfaces;
-using AuthenticationService.Model.Request;
-using AuthenticationService.Model.Response;
 using Microsoft.AspNetCore.Mvc;
+using Model.Authentication.Request;
+using Model.Authentication.Response;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace AuthenticationService.Controllers

@@ -1,9 +1,9 @@
-using AuthenticationService.Business;
-using AuthenticationService.Business.Implements;
 using AuthenticationService.Business.Interfaces;
-using AuthenticationService.Repository.Implements;
-using AuthenticationService.Repository.Interfaces;
+using Business.Implements;
 using Helper.Middleware;
+using Repository;
+using Repository.Implements;
+using Repository.Interfaces;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,7 +14,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(g => g.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, $"{Assembly.GetExecutingAssembly().GetName().Name}.xml")));
 builder.Services.AddScoped<IAuthRepository,AuthRepository>();
 builder.Services.AddScoped<IAuthBusiness,AuthBusiness>();
-builder.Services.AddDbContext<AuthenticationServiceContext>();
+builder.Services.AddDbContext<MicroServiceContext>();
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>

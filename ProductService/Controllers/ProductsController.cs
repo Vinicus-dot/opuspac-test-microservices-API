@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Model.Product.DTO;
+using Model.Product.Request;
 using ProductService.Business.Interfaces;
-using ProductService.Model.DTO;
-using ProductService.Model.Entity;
-using ProductService.Model.Request;
 using Swashbuckle.AspNetCore.Annotations;
 
 namespace ProductService.Controllers

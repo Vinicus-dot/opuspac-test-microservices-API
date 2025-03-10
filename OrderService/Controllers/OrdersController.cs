@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using OrderService.Business.Interfaces;
-using OrderService.Model.DTO;
 using Model;
+using OrderService.Business.Interfaces;
+using Model.Order.DTO;
 
 namespace OrderService.Controllers
 {
