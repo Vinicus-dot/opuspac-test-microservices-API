@@ -55,9 +55,8 @@ dotnet tool install --global dotnet-ef
 
 Caso precise criar uma nova migração para o Entity Framework Core, você pode usar os seguintes comandos:
 
-- Para adicionar uma migração para o `ProductService`, execute `dotnet ef migrations add ProductService --project ProductService`.
-- Para adicionar uma migração para o `OrderService`, execute `dotnet ef migrations add OrderService --project OrderService`.
-- Para adicionar uma migração para o `AuthenticationService`, execute `dotnet ef migrations add AuthenticationService --project AuthenticationService`.
+- Para adicionar uma migração, execute `dotnet ef migrations add Initial --project Repository --startup-project OrderService `.
+
 
 Esses comandos irão gerar as migrações necessárias para atualizar o esquema do banco de dados de acordo com as alterações feitas nos modelos.
 
@@ -65,18 +64,7 @@ Esses comandos irão gerar as migrações necessárias para atualizar o esquema 
 
 Se o projeto utilizar Entity Framework Core, você deve aplicar as migrações para atualizar o banco de dados. Use os seguintes comandos:
 
-- Para atualizar o banco de dados do `ProductService`, execute `dotnet ef database update --project ProductService`.
-- Para atualizar o banco de dados do `OrderService`, execute `dotnet ef database update --project OrderService`.
-- Para atualizar o banco de dados do `AuthenticationService`, execute `dotnet ef database update --project AuthenticationService`.
+- Para atualizar o banco de dados, execute `dotnet ef database update --project Repository --startup-project OrderService`.
 
 Esses comandos irão aplicar as migrações pendentes e garantir que o banco de dados esteja em sincronia com os modelos do seu projeto.
 
-### Executando a Aplicação
-
-Para executar cada um dos microserviços, você pode usar os seguintes comandos:
-
-- Para iniciar o `ProductService`, execute `dotnet run ProductService`.
-- Para iniciar o `OrderService`, execute `dotnet run OrderService`.
-- Para iniciar o `AuthenticationService`, execute `dotnet run AuthenticationService`.
-
-Esses comandos irão compilar e iniciar os serviços, permitindo que você interaja com a aplicação e teste suas funcionalidades.

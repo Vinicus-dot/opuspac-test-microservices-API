@@ -3,17 +3,17 @@
     "Name": "All Start",
     "Projects": [
       {
-        "Path": "AuthenticationService\\AuthenticationService.csproj",
+        "Name": "AuthenticationService\\AuthenticationService.csproj",
         "Action": "StartWithoutDebugging",
         "DebugTarget": "http"
       },
       {
-        "Path": "ProductService\\ProductService.csproj",
+        "Name": "OrderService\\OrderService.csproj",
         "Action": "StartWithoutDebugging",
         "DebugTarget": "http"
       },
       {
-        "Path": "OrderService\\OrderService.csproj",
+        "Name": "ProductService\\ProductService.csproj",
         "Action": "StartWithoutDebugging",
         "DebugTarget": "http"
       }

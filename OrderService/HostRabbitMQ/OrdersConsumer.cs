@@ -8,6 +8,8 @@ namespace OrderService.HostRabbitMQ
 {
     public class OrderConsumer : BackgroundService
     {
+        public static readonly string QueueProduct = Util.GetEnvironmentVariable("PRODUCT_QUEUE");
+        public static readonly string RabbitConnection = Util.GetEnvironmentVariable("RABBIT_CONNECTION");
         private readonly IConnection _connection;
         private readonly IChannel _channel;
         private readonly IServiceScopeFactory _serviceScopeFactory;
@@ -17,13 +19,13 @@ namespace OrderService.HostRabbitMQ
             try
             {
                 _serviceScopeFactory = serviceScopeFactory;
-                var factory = new ConnectionFactory { Uri = new Uri(Util.RabbitConnection) };
+                var factory = new ConnectionFactory { Uri = new Uri(RabbitConnection) };
 
 
                 _connection = factory.CreateConnectionAsync().Result;
                 _channel = _connection.CreateChannelAsync().Result;
 
-                _channel.QueueDeclareAsync(queue: Util.QueueProduct,
+                _channel.QueueDeclareAsync(queue: QueueProduct,
                                      durable: true,
                                      exclusive: false,
                                      autoDelete: false,
@@ -41,7 +43,7 @@ namespace OrderService.HostRabbitMQ
             {
                 var consumer = new AsyncEventingBasicConsumer(_channel);
 
-                Console.WriteLine($"Escutando na fila {Util.QueueProduct}");
+                Console.WriteLine($"Escutando na fila {QueueProduct}");
                 consumer.ReceivedAsync += async (model, ea) =>
                 {
                     var body = ea.Body.ToArray();
@@ -53,7 +55,7 @@ namespace OrderService.HostRabbitMQ
                     await _channel.BasicAckAsync(ea.DeliveryTag, false);
                 };
 
-                await _channel.BasicConsumeAsync(queue: Util.QueueProduct,
+                await _channel.BasicConsumeAsync(queue: QueueProduct,
                                         autoAck: false,
                                         consumer: consumer);
 

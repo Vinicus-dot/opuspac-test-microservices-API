@@ -38,7 +38,7 @@ namespace ProductService.Business.Implements
                 Description = createProductRequest.Description,
             });
 
-            RabbitMQFactory _rabbitMQ = new (Util.RabbitConnection, Util.QueueProduct);
+            RabbitMQFactory _rabbitMQ = new (Util.GetEnvironmentVariable("RABBIT_CONNECTION"), Util.GetEnvironmentVariable("PRODUCT_QUEUE"));
 
             product = await _productsRepository.GetProduct(createProductRequest.Name);
 

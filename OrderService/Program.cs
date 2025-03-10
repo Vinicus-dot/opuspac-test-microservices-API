@@ -10,6 +10,7 @@ using Helper;
 using Repository.Interfaces;
 using Repository.Implements;
 using Repository;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +20,11 @@ builder.Services.AddScoped<IOrdersBusiness, OrdersBusiness>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddDbContext<MicroServiceContext>();
+//builder.Services.AddDbContext<MicroServiceContext>();
+builder.Services.AddDbContextFactory<MicroServiceContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DEFAULT_CONNECTION"));
+});
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(builder =>

@@ -1,6 +1,7 @@
 using Helper;
 using Helper.Middleware;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using ProductService.Business.Implements;
@@ -15,7 +16,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IProductsRepository, ProductsRepository>();
 builder.Services.AddScoped<IProductsBusiness, ProductsBusiness>();
-builder.Services.AddDbContext<MicroServiceContext>();
+//builder.Services.AddDbContext<MicroServiceContext>();
+builder.Services.AddDbContextFactory<MicroServiceContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DEFAULT_CONNECTION"));
+});
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
